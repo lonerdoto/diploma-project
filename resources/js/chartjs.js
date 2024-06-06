@@ -140,14 +140,16 @@ async function updateChart(period) {
             }
         })
         .catch(error => console.error('Error:', error));
+
+    await fetch('/api/top-employees')
+        .then(response => response.json())
+        .then(data => {
+            createChartEmployee(data);
+            document.getElementById('topEmployeesChart').parentNode.parentNode.children[1].children[0].remove()
+        })
+        .catch(error => console.error('Error:', error));
 }
-await fetch('/api/top-employees')
-    .then(response => response.json())
-    .then(data => {
-        createChartEmployee(data);
-        document.getElementById('topEmployeesChart').parentNode.parentNode.children[1].children[0].remove()
-    })
-    .catch(error => console.error('Error:', error));
+
 
 updateChart('week')
 document.querySelectorAll('#select-period-chart').forEach(e => {
