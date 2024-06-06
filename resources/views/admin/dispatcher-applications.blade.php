@@ -179,11 +179,21 @@
             </div>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.0/exceljs.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
         @vite('resources/js/export-to-excel.js')
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var dateInputs = document.querySelectorAll('input[type="date"]');
+
+                dateInputs.forEach(function(input) {
+                    input.addEventListener('focus', function() {
+                        if (typeof input.showPicker === 'function') {
+                            input.showPicker();
+                        }
+                    });
+                });
+            });
+        </script>
     @include('components.scripts.custom-select-control')
     @include('components.scripts.enter-to-send-form')
     @include('components.admin.delete-confirmation', ['route' => route('deleteDispatcherApplication')])

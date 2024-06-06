@@ -24,7 +24,6 @@
         editButton.forEach(e => {
             e.addEventListener('click', function (event) {
                 inputIdForName.value = e.parentNode.parentNode.parentNode.children[0].innerText
-                modalTitle.innerText = 'Редактирование типа заявки'
                 event.preventDefault()
                 inputId.value = event.target.id
                 inputIdForDelete.value = e.id

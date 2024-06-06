@@ -1,7 +1,6 @@
 @extends('layouts.admin-layout', ['title' => 'Панель администратора'])
 @section('content')
     @include('components.scripts.get-role')
-    @vite('char')
     <div class="mt-28 mb-10 mx-auto max-w-screen-2xl shadow-md sm:rounded-lg m-auto p-8 bg-gray-900">
         <h1 class="hidden service-title mb-5 text-3xl font-normal text-gray-500 dark:text-gray-400">
             Панель администратора

@@ -26,7 +26,7 @@
     <div class="z-50 p-4 w-full max-w-md max-h-full">
         <div class=" rounded-lg shadow bg-gray-700">
             <form class="flex flex-col items-stretch gap-5 p-5" action="{{route('addApplicationType')}}" method="POST">
-                <h3 class="modal-title mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Новый тип заявки</h3>
+                <h3 class="modal-title mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Редактировать тип заявки</h3>
                 @csrf
                 @method('POST')
                 <input name="user-id" type="hidden" class="hidden" id="user-id">

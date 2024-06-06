@@ -1,3 +1,6 @@
+import ExcelJS from 'exceljs';
+
+
 document.addEventListener('DOMContentLoaded', function () {
         const exportButton = document.getElementById('export-button');
         const table = document.getElementById('data-table');
