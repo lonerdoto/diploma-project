@@ -298,6 +298,10 @@ class AdminController extends Controller
 
     public function editUserApplication(Request $request)
     {
+        $request->validate([
+            'textarea-description' => 'string',
+            'select-status' => 'required|string'
+        ]);
         $userApplication = EmployeeApplication::find((int)$request->{'application-id'});
 
        if(!empty($userApplication)) {
