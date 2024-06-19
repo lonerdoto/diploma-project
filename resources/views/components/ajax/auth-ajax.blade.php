@@ -4,7 +4,6 @@
     const body = document.querySelector('body')
     const nameInput = document.querySelector('input[name="name"]');
 
-
     const createLInvalidLabel = () => {
         let newElement = document.createElement('label')
         newElement.innerText =  "Только кириллица и пробел"

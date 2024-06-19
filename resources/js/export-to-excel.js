@@ -1,13 +1,12 @@
 import ExcelJS from 'exceljs';
-
-
 document.addEventListener('DOMContentLoaded', function () {
         const exportButton = document.getElementById('export-button');
         const table = document.getElementById('data-table');
+        const fileName = document.querySelector('h1').innerText
     function getFormattedDate() {
         const today = new Date();
         const day = String(today.getDate()).padStart(2, '0');
-        const month = String(today.getMonth() + 1).padStart(2, '0'); // Январь начинается с 0
+        const month = String(today.getMonth() + 1).padStart(2, '0');
         const year = today.getFullYear();
 
         return `${day}-${month}-${year}`;
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
 
-            link.download = "Записи диспетчера " + getFormattedDate() + '.xlsx';
+            link.download = fileName + " " + getFormattedDate() + '.xlsx';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

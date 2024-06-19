@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('dispatcher_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class)->constrained();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->string('initiator', 50)->nullable(); // Инициатор обслуживания или ремонта
             $table->string('system_name', 200)->nullable(); // Наименование инженерной системы (оборудования)
             $table->text('planned_work', 100)->nullable(); // Планируемые работы

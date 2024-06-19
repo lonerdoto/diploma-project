@@ -2,9 +2,9 @@
 @section('content')
     <div class="py-5 px-10 flex flex-col gap-52 my-10 overflow-hidden">
         <div class="flex even:flex-row-reverse justify-between gap-10 first-color">
-            <div class="max-w-xl flex flex-col gap-8 items-start animate-left">
+            <div class="max-w-sm flex flex-col gap-12 items-start animate-left">
                 <h1 class="text-4xl">Что это за сервис?</h1>
-                <p class="text-right-">Данный сервис предоставляет возможность сотрудникам &laquo;ФармФирма&nbsp;&laquo;Сотекс&raquo;
+                <p>Данный сервис предоставляет возможность сотрудникам &laquo;ФармФирма&nbsp;&laquo;Сотекс&raquo;
                     отправлять заявку, нацеленную на&nbsp;улучшение рабочей деятельности, в&nbsp;соответствии с&nbsp;типом
                     заявки</p>
                 <div class="flex-grow"></div>

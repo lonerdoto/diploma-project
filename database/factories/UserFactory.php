@@ -21,10 +21,20 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'department' => fake()->colorName(),
+            'avatar' => $this->generateRandomAvatar(),
             'director-name' => fake()->name(),
             'password' => '$2y$10$92IXUNpkjO0.uheWG/igi', // password
             'created_at' => fake()->dateTimeBetween('-2 month', 'now'),
         ];
+    }
+    public function generateRandomAvatar()
+    {
+
+        $randomNumber = rand(1, 20);
+
+        $avatarPath = 'avatars/avatar' . $randomNumber . '.png';
+
+        return $avatarPath;
     }
 
 

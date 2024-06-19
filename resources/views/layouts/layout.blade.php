@@ -58,7 +58,7 @@
                 <div class="dropdown">
                     <button class="hover:scale-105 transition duration-300  dropbtn flex justify-content-center items-center ">
                         <a href="{{route('profile', ['id' => auth()->id()])}}">
-                            <img class="w-16 h-16 rounded-full"
+                            <img class="w-16 h-16 rounded-full bg-second"
                                  src="{{auth()->user()->avatar === null ? asset('images/no-avatar.svg')  : url('uploads/' . auth()->user()->avatar ) }}"
                                  id="user-avatar" alt="user photo">
                         </a>

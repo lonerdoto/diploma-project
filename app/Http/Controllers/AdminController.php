@@ -21,7 +21,6 @@ class AdminController extends Controller
     public function showAdmin() {
         return view('admin.admin-welcome');
     }
-
     public function showUsersList(Request $request)
     {
         $roles = DB::table('roles')->get();
@@ -41,19 +40,20 @@ class AdminController extends Controller
             'userSearch' => $search
         ]);
     }
-
     public function deleteUser(Request $request)
     {
         $user = User::find($request->id);
         if(!empty($user)) {
-            $user->delete();
-
-            return redirect()->back()->with('success', "Пользователь  « $user->name » удалён");
+            if($user->id !== auth()->id()) {
+                $user->delete();
+                return redirect()->back()->with('success', "Пользователь  « $user->name » удалён");
+            } else {
+                return redirect()->back()->with('success', "Нельзя удалить себя же");
+            }
         } else {
             return redirect()->back()->withErrors("Ошибка, пользователь не найден");
         }
     }
-
     public function editUser(Request $request)
     {
         $user = User::find((int)$request->{'user-id'});
@@ -63,16 +63,12 @@ class AdminController extends Controller
             $user->department = $request->{'input-department'} == "Не указан" ? null : $request->{'input-department'};
             $user->phone = $request->{'input-phone'} == "Не указан" ? null : $request->{'input-phone'};
             $user->role = $request->{'select-role'};
-
             $user->save();
             return redirect()->back()->with('success', "Пользователь « $user->name » отредактирован");
-
         } else {
             return redirect()->back()->withErrors("Ошибка, пользователь не найден");
         }
-
     }
-
     public function showApplicationStatus()
     {
         $statuses = DB::table('statuses')->orderBy('created_at', 'desc')->paginate(12);
@@ -80,7 +76,6 @@ class AdminController extends Controller
             'statuses' => $statuses
         ]);
     }
-
     public function addApplicationStatus(Request $request)
     {
         $credentials = $request->validate([
@@ -89,7 +84,6 @@ class AdminController extends Controller
         Status::create($credentials);
         return redirect()->back()->with('success', "Новый статус создан");
     }
-
     public function deleteApplicationStatus(Request $request)
     {
         $status = Status::find($request->id);
@@ -97,9 +91,7 @@ class AdminController extends Controller
             $status->delete();
             return redirect()->back()->with('success', "Статус «  $status->status » удалён");
         } else  return redirect()->back()->withErrors("Ошибка, статус не найден");
-
     }
-
     public function editApplicationStatus(Request $request)
     {
         $status = Status::find((int)$request->{'user-id'});
@@ -107,16 +99,10 @@ class AdminController extends Controller
             $oldStatusName = $status->status;
             $status->status = $request->status;
             $status->save();
-
             return redirect()->back()->with('success', "Статус «  $oldStatusName » отредактирован");
         } else return redirect()->back()->withErrors("Ошибка, статус не найден");
 
-
-
-
-
     }
-
     public function showAddApplicationType()
     {
         $applicationTypes = DB::table('application_types')->orderBy('created_at', 'desc')->paginate(12);
@@ -125,18 +111,14 @@ class AdminController extends Controller
             'applicationTypes' => $applicationTypes
         ]);
     }
-
     public function addApplicationType(Request $request)
     {
         $credentials = $request->validate([
             'type' => 'required'
         ]);
         ApplicationType::create($credentials);
-
-
         return redirect()->back()->with('success', "Новый тип заявки создан");
     }
-
     public function deleteApplicationType(Request $request)
     {
         $applicationType = ApplicationType::find($request->id);
@@ -145,27 +127,17 @@ class AdminController extends Controller
 
             return redirect()->back()->with('success', "Тип заявки «  $applicationType->type » удалён");
         } else return redirect()->back()->withErrors("Ошибка, тип заявки не найден");
-
     }
-
     public function editApplicationType(Request $request)
     {
         $applicationType = ApplicationType::find((int)$request->{'user-id'});
         if (!empty($applicationType)) {
             $oldTypeName = $applicationType->type;
             $applicationType->type = $request->{'type'};
-
             $applicationType->save();
-
             return redirect()->back()->with('success', "Тип заявки « $oldTypeName » отредактирован");
         } else return redirect()->back()->withErrors("Ошибка, тип заявки не найден");
-
-
-
     }
-
-
-
     public function usersApplications(Request $request)
     {
         $applicationTypes = ApplicationType::all();
@@ -173,23 +145,22 @@ class AdminController extends Controller
         $query = $request->input('user-search');
         $type = $request->input('application-type');
         $status = $request->input('application-status');
-
         $queryBuilder = EmployeeApplication::orderBy('created_at', 'desc');
-
         if (!empty($query)) {
-            $queryBuilder->where('description', 'LIKE', "%{$query}%");
+            $queryBuilder->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('description', 'LIKE', "%{$query}%")
+                    ->orWhereHas('user', function ($userQuery) use ($query) {
+                        $userQuery->where('name', 'LIKE', "%{$query}%");
+                    });
+            });
         }
-
         if (!empty($type)) {
             $queryBuilder->where('type', $type);
         }
-
         if (!empty($status)) {
             $queryBuilder->where('status', $status);
         }
-
         $employeeApplications = $queryBuilder->paginate(10);
-
         return view('admin.users-applications', [
             'employeeApplications' => $employeeApplications,
             'applicationTypes' => $applicationTypes,
@@ -197,7 +168,6 @@ class AdminController extends Controller
             'userSearch' => $query
         ]);
     }
-
     public function deleteUserApplication(Request $request)
     {
         $employeeApplication = EmployeeApplication::find($request->id);
@@ -207,21 +177,17 @@ class AdminController extends Controller
            return redirect()->back()->with('success', "Заявка удалена");
        } else return redirect()->back()->withErrors("Ошибка, заявка не найдена");
     }
-
     public function dispatcherApplications(Request $request)
     {
-
         $applicationTypes = ApplicationType::all();
         $statuses = Status::all();
         $query = $request->input('user-search');
         $status = $request->input('application-status');
         $date_start = $request->input('date-start');
         $date_end = $request->input('date-end');
-
         $queryBuilder = DispatcherApplication::query()
             ->select('dispatcher_applications.*')
             ->leftJoin('users', 'users.id', '=', 'dispatcher_applications.user_id');
-
         if (!empty($date_start) && !empty($date_end)) {
             try {
                 $start = Carbon::createFromFormat('Y-m-d', $date_start)->startOfDay();
@@ -233,17 +199,13 @@ class AdminController extends Controller
         } else {
             $queryBuilder->orderBy('dispatcher_applications.created_at', 'desc');
         }
-
         if (!empty($query)) {
             $queryBuilder->where('users.name', 'LIKE', "%{$query}%");
         }
-
         if (!empty($status)) {
             $queryBuilder->where('dispatcher_applications.status', $status);
         }
-
         $dispatcherApplications = $queryBuilder->paginate(20);
-
         return view('admin.dispatcher-applications', [
             'dispatcherApplications' => $dispatcherApplications,
             'applicationTypes' => $applicationTypes,
@@ -265,11 +227,8 @@ class AdminController extends Controller
         ]);
         $credentials['user_id'] = auth()->id();
         DispatcherApplication::create($credentials);
-
         return redirect()->back()->with('success', "Запись создана");
-
     }
-
     public function editDispatcherApplication (Request $request) {
         $dispatcherApplication = DispatcherApplication::find((int)$request->{'user-id'});
         $dispatcherApplication->initiator = $request->{'initiator'};
@@ -280,9 +239,7 @@ class AdminController extends Controller
         $dispatcherApplication->approval_result = $request->{'approval_result'};
         $dispatcherApplication->communicated_by = $request->{'communicated_by'};
         $dispatcherApplication->status = $request->{'select-status'};
-
         $dispatcherApplication->save();
-
         return redirect()->back()->with('success', "Запись №$dispatcherApplication->id отредактирована");
     }
     public function deleteDispatcherApplication(Request $request)
@@ -295,7 +252,6 @@ class AdminController extends Controller
             return redirect()->back()->withErrors("Ошибка, запись не найдена");
         }
     }
-
     public function editUserApplication(Request $request)
     {
         $request->validate([
@@ -303,19 +259,14 @@ class AdminController extends Controller
             'select-status' => 'required|string'
         ]);
         $userApplication = EmployeeApplication::find((int)$request->{'application-id'});
-
        if(!empty($userApplication)) {
            $userApplication->status = $request->{'select-status'};
            $userApplication->description = $request->{'textarea-description'};
            $userName = $userApplication->user->name;
-
            $userApplication->save();
-
            return redirect()->back()->with('success', "Заявка от « $userName » отредактирована");
        }  else  return redirect()->back()->withErrors("Ошибка, заявка не найдена");
-
 }
-
     public function updateDepartment(Request $request, $id) // Логика обновления отдела пользователя
     {
         $request->validate([
@@ -325,7 +276,6 @@ class AdminController extends Controller
             $user = User::find($id);
             $user->department = $request->{'input-department'};
             $user->save();
-
             return redirect()->back()->with(['success' => 'Отдел обновлен']);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Internal server error'], 500);
@@ -337,13 +287,10 @@ class AdminController extends Controller
             'input-director-name' => 'required|string|min:10',
         ]);
         $user = User::find($id);
-
         if (!empty($user)) {
             $user->{'director-name'} = $request->{'input-director-name'};
             $user->save();
-
             return redirect()->back()->with(['success' => 'ФИО руководителя обновлено']);
         } else return redirect()->back()->withErrors("Ошибка, пользователь не найден");
-
     }
 }

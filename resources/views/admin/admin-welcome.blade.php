@@ -9,7 +9,7 @@
             <div class="flex flex-wrap flex-row gap-5 w-full justify-between">
                 <div class="rounded-xl bg-gray-700 py-2 px-8 shadow-default flex flex-col gap-5 w-1/5 justify-between">
                     <div class="flex gap-1 flex-col">
-                        <svg class="second-color" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
+                        <svg class="text-white" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
                              id="request-send-16px" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="rounded-xl bg-gray-700 py-2 px-8 shadow-default flex flex-col gap-5 w-1/5 justify-between">
                     <div class="flex gap-1 flex-col">
-                        <svg class="second-color" width="46px" height="46px" viewBox="0 0 24 24" fill="none"
+                        <svg class="text-white" width="46px" height="46px" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="rounded-xl bg-gray-700 py-2 px-8 shadow-default flex flex-col gap-5 w-1/5 justify-between">
                     <div class="flex gap-1 flex-col">
-                        <svg class="second-color" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
+                        <svg class="text-white" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
                              id="request-new-16px" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="rounded-xl bg-gray-700 py-2 px-8 shadow-default flex flex-col gap-5 w-1/5 justify-between">
                     <div class="flex gap-1 flex-col">
-                        <svg class="second-color" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
+                        <svg class="text-white" fill="currentColor" width="46px" height="46px" viewBox="0 0 16 16"
                              id="request-approval-16px" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

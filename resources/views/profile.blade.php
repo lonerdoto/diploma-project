@@ -13,7 +13,7 @@
                                class="flex flex-col items-center gap-6 w-44 h-44 shadow-xl rounded-full align-middle border-none -top-12">
                             <img id="avatarPreview" alt="avatar"
                                  src="{{ $user->avatar === null ? asset('images/no-avatar.svg')  : url('uploads/' . $user->avatar ) }}"
-                                 class="@if(auth()->id() === $user->id)  hover:scale-105 cursor-pointer @endif transition duration-300  w-44 h-44 shadow-xl rounded-full bg-gray-100">
+                                 class="@if(auth()->id() === $user->id)  hover:scale-105 cursor-pointer @endif transition duration-300 bg-second  w-44 h-44 shadow-xl rounded-full">
                             @if (auth()->id() === $user->id)
                                 <input id="avatar" name="avatar" type="file" class="hidden">
                             @endif

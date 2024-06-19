@@ -2,9 +2,18 @@
 @section('content')
     @include('components.scripts.get-role')
     <div class="mt-28 mb-10 mx-auto max-w-screen-2xl overflow-x-auto shadow-md sm:rounded-lg m-auto p-8 bg-gray-900">
-        <h1 class="service-title mb-5 text-3xl font-normal text-gray-500 dark:text-gray-400">
-            Список сотрудников
-        </h1>
+        <div class="flex justify-between mb-10">
+            <h1 class="service-title mb-5 text-3xl font-normal text-gray-500 dark:text-gray-400">
+                Список сотрудников
+            </h1>
+            <div class="relative">
+                <svg class="text-white absolute bottom-5 left-3" width="20px" height="23px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.29289 1.29289C9.48043 1.10536 9.73478 1 10 1H18C19.6569 1 21 2.34315 21 4V9C21 9.55228 20.5523 10 20 10C19.4477 10 19 9.55228 19 9V4C19 3.44772 18.5523 3 18 3H11V8C11 8.55228 10.5523 9 10 9H5V20C5 20.5523 5.44772 21 6 21H7C7.55228 21 8 21.4477 8 22C8 22.5523 7.55228 23 7 23H6C4.34315 23 3 21.6569 3 20V8C3 7.73478 3.10536 7.48043 3.29289 7.29289L9.29289 1.29289ZM6.41421 7H9V4.41421L6.41421 7ZM19 12C19.5523 12 20 12.4477 20 13V19H23C23.5523 19 24 19.4477 24 20C24 20.5523 23.5523 21 23 21H19C18.4477 21 18 20.5523 18 20V13C18 12.4477 18.4477 12 19 12ZM11.8137 12.4188C11.4927 11.9693 10.8682 11.8653 10.4188 12.1863C9.96935 12.5073 9.86526 13.1318 10.1863 13.5812L12.2711 16.5L10.1863 19.4188C9.86526 19.8682 9.96935 20.4927 10.4188 20.8137C10.8682 21.1347 11.4927 21.0307 11.8137 20.5812L13.5 18.2205L15.1863 20.5812C15.5073 21.0307 16.1318 21.1347 16.5812 20.8137C17.0307 20.4927 17.1347 19.8682 16.8137 19.4188L14.7289 16.5L16.8137 13.5812C17.1347 13.1318 17.0307 12.5073 16.5812 12.1863C16.1318 11.8653 15.5073 11.9693 15.1863 12.4188L13.5 14.7795L11.8137 12.4188Z" fill="currentColor"></path> </g></svg>
+                <button name="export-excel" type="button" id="export-button"
+                        class="py-2.5 px-10 my-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                    Экспорт в Excel
+                </button>
+            </div>
+        </div>
         <form id="table-search-users" action="{{route('usersList')}}" method="GET">
             <div
                 class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
@@ -68,7 +77,7 @@
                 </div>
             </div>
         </form>
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="data-table">
             <thead class="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -152,6 +161,8 @@
             {{ $users->withQueryString()->links() }}
         </div>
     </div>
+
+    @vite('resources/js/export-to-excel.js')
     @include('components.scripts.enter-to-send-form')
     @include('components.scripts.custom-select-control')
     @include('components.scripts.users-popup-control')

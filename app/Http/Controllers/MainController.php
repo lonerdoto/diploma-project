@@ -56,7 +56,7 @@ class MainController extends Controller
         $credentials['files'] = json_encode($paths);
         EmployeeApplication::create($credentials);
         Session::flash('success', 'Заявление отправлено');
-        return response()->json(['redirect_url' => url()->previous()]);
+        return response()->json(['redirect_url' => route('applications')]);
     }
     public function applications(Request $request)
     { // Показать страницу со всеми заявками пользователя

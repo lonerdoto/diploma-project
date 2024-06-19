@@ -1,6 +1,5 @@
 @extends('layouts.layout', ['title' => 'Мои заявления'])
 @section('content')
-
     <div class="overflow-x-auto shadow-md sm:rounded-lg mx-auto p-8 bg-gray-100 ">
         <h1 class="mb-5 text-3xl font-normal text-gray-900 light:text-gray-400 first-color">Мои заявки</h1>
         <form id="table-search-users" action="{{ route('applications') }}" method="GET"
@@ -120,7 +119,7 @@
                         {{ $employeeApplication->description ?? 'Не указано'}}
                     </td>
                     <td class="px-6 py-4 files flex-wrap">
-                        <div class="flex gap-2 flex-wrap">
+                        <div class="flex gap-2 flex-wrap justify-center">
                             @forelse(json_decode($employeeApplication->files) as $file)
                                 @if (preg_match('/\.(jpeg|jpg|png|gif|svg)$/i', $file))
                                     <a href="{{ url('uploads/' . $file) }}" download>

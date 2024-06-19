@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\ApplicationType::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Status::class)->constrained()->cascadeOnDelete();
             $table->text('description');
             $table->string('type', 30);
             $table->string('status', 30)->default('Новое');
