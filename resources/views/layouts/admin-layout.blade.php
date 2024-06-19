@@ -12,7 +12,7 @@
     @include('components.scripts.flash-control')
 </head>
 <body class="relative bg-gray-700">
-<nav class="fixed top-0 z-40 w-full bg-white border-b dark:bg-gray-800 border-slate-500">
+<nav class="fixed top-0 z-40 w-full border-b bg-gray-800 border-slate-500">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex gap-4 items-center">
@@ -91,19 +91,19 @@
 <aside id="logo-sidebar"
        class="fixed top-0 left-0 z-30 w-64 h-screen pt-20 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 sidebar-transition transform -translate-x-full"
        aria-label="Sidebar">
-    <div class="relative sidebar-list h-full bg-scroll px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+    <div class="relative sidebar-list h-full bg-scroll px-3 pb-4 overflow-y-auto bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li>
                 <details class="details-sidebar">
                     <summary
-                        class="open:bg-white cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="open:bg-white cursor-pointer flex items-center p-2 rounded-lg text-white hover:bg-gray-500 group">
                         <svg
-                            class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
                             width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.25 2.07324C10.6437 2.18634 9.93159 2.43011 8.83772 2.80454L8.26491 3.00062C5.25832 4.02978 3.75503 4.54436 3.37752 5.08223C3.00825 5.60836 3.00018 7.14957 3 10.2093L11.25 7.45925V2.07324Z" fill="currentColor"></path> <path d="M11.25 9.04039L3 11.7904V11.9912C3 17.6293 7.23896 20.3653 9.89856 21.5271C10.4093 21.7502 10.7392 21.8943 11.25 21.9595V9.04039Z" fill="currentColor"></path> <path d="M12.75 21.9595V9.04039L21 11.7904V11.9912C21 17.6293 16.761 20.3653 14.1014 21.5271C13.5907 21.7502 13.2608 21.8943 12.75 21.9595Z" fill="currentColor"></path> <path d="M12.75 7.45925V2.07324C13.3563 2.18634 14.0684 2.43011 15.1623 2.80454L15.7351 3.00062C18.7417 4.02978 20.245 4.54436 20.6225 5.08223C20.9918 5.60836 20.9998 7.14957 21 10.2093L12.75 7.45925Z" fill="currentColor"></path> </g></svg>
                         <span class="flex-1 ms-3 whitespace-nowrap">Администратор</span>
                     </summary>
                     <a href="{{route('admin')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Админ-панель</span>
                     </a>
                 </details>
@@ -112,9 +112,9 @@
             <li>
                 <details class="details-sidebar">
                     <summary
-                        class="open:bg-white cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="open:bg-white cursor-pointer flex items-center p-2 rounded-lg text-white hover:bg-gray-500 group">
                         <svg
-                            class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 21">
                             <path
@@ -125,7 +125,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Диспетчер</span>
                     </summary>
                     <a href="{{route('dispatcherApplications')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Посмотреть записи</span>
                     </a>
                 </details>
@@ -133,9 +133,9 @@
             <li>
                 <details class="details-sidebar">
                     <summary
-                        class="open:bg-white cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="open:bg-white cursor-pointer flex items-center p-2 rounded-lg text-white hover:bg-gray-500 group">
                         <svg
-                            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 18 18">
                             <path
@@ -144,11 +144,11 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Система</span>
                     </summary>
                     <a href="{{route('showAddApplicationType')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Типы заявок</span>
                     </a>
                     <a href="{{route('showApplicationStatus')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Статусы заявок</span>
                     </a>
 
@@ -158,9 +158,9 @@
             <li>
                 <details class="details-sidebar">
                     <summary
-                        class="open:bg-white cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="open:bg-white cursor-pointer flex items-center p-2 rounded-lg text-white hover:bg-gray-500 group">
                         <svg
-                            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 20 18">
                             <path
@@ -169,11 +169,11 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Сотрудники</span>
                     </summary>
                     <a href="{{route('usersList')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Список сотрудников</span>
                     </a>
                     <a href="{{route('usersApplications')}}"
-                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                       class="flex items-center p-2 text-white hover:bg-gray-500 group">
                         <span class="pl-5 flex-1 ms-3 whitespace-nowrap">Заявки сотрудников</span>
                     </a>
                 </details>

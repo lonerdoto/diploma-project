@@ -22,18 +22,18 @@
                 </div>
             </div>
             <div class="flex-grow"></div>
-            <div class="flex flex-col gap-10 max-w-screen-sm bg-gray-100 rounded-xl p-7 first-color">
+            <div class="flex flex-col gap-10 max-w-screen-sm bg-gray-100 rounded-xl p-5 first-color">
                 <div class="flex flex-col gap-5">
                     <h2 class="text-xl">Схема проезда в Московский офис ЗАО «ФармФирма «Сотекс»</h2>
                     <a href="{{asset('images/map3.png')}}" data-lightbox="image-gallery" data-title="Your Image Title 1">
-                        <img class="hover:scale-105 transition duration-300 rounded-2xl shadow-2xl" src="{{asset('images/map3.png')}}" alt="Image 1">
+                        <img class="hover:scale-105 transition duration-300 rounded-2xl shadow-sm" src="{{asset('images/map3.png')}}" alt="Image 1">
                     </a>
                     <p class="text-xl">115201, Москва, Каширское шоссе, д. 22, корп. 4, стр.7</p>
                 </div>
                 <div class="flex flex-col gap-5">
                     <h2 class="text-xl">Схема проезда в коммерческий офис ЗАО «ФармФирма «Сотекс»</h2>
                     <a href="{{asset('images/map2.png')}}" data-lightbox="image-gallery" data-title="Your Image Title 1">
-                        <img class="hover:scale-105 transition duration-300 rounded-2xl shadow-2xl" src="{{asset('images/map2.png')}}" alt="Image 1">
+                        <img class="hover:scale-105 transition duration-300 rounded-2xl shadow-sm" src="{{asset('images/map2.png')}}" alt="Image 1">
                     </a>
                     <p class="text-xl">141345, Московская область, Сергиево-Посадский муниципальный район, сельское поселение
                         Березняковское, пос. Беликово, д. 11</p>
