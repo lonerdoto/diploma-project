@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "autoprefixer": "^10.4.19",
-        "chart.js": "^4.4.3",
+        "chart.js": "^4.4.4",
         "exceljs": "^4.4.0",
         "filesaver": "^0.0.13",
         "inputmask": "^5.0.9",
